@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import UserItem from './UserItem';
 import Spinner from '../layout/Spinner';
+import GithubContext from '../../context/github/githubContext';
 
 const userStyle = {
   display: 'grid',
@@ -9,20 +9,21 @@ const userStyle = {
   gridGap: '1rem'
 };
 
-const Users = ({ users, loading }) =>
-  loading ? (
-    <Spinner />
-  ) : (
-    <div style={userStyle}>
-      {users.map(user => (
-        <UserItem key={user.id} user={user} />
-      ))}
-    </div>
-  );
+const Users = () => {
+  const githubContext = useContext(GithubContext);
+  const { loading, users } = githubContext;
 
-Users.propTypes = {
-  users: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
+  if (loading) {
+    return <Spinner />;
+  } else {
+    return (
+      <div style={userStyle}>
+        {users.map(user => (
+          <UserItem key={user.id} user={user} />
+        ))}
+      </div>
+    );
+  }
 };
 
 export default Users;
