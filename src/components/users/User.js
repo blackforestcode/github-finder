@@ -44,12 +44,6 @@ class User extends Component {
         <Link to="/" className="btn btn-light">
           &larr; Back to Search
         </Link>
-        Hireable:{' '}
-        {hireable ? (
-          <i className="fas fa-check text-success" />
-        ) : (
-          <i className="fas fa-times-circle text-danger" />
-        )}
         <div className="card grid-2">
           <div className="all-center">
             <img
@@ -60,6 +54,14 @@ class User extends Component {
             />
             <h1>{name}</h1>
             <p>Location: {location}</p>
+            <p>
+              Hireable:{' '}
+              {hireable ? (
+                <i className="fas fa-check text-success" />
+              ) : (
+                <i className="fas fa-times-circle text-danger" />
+              )}
+            </p>
           </div>
           <div>
             {bio && (
@@ -97,7 +99,9 @@ class User extends Component {
                 {blog && (
                   <Fragment>
                     <strong>Website: </strong>
-                    {blog}
+                    <a href={blog} target="_blank" rel="noopener noreferrer">
+                      {blog}
+                    </a>
                   </Fragment>
                 )}
               </li>
