@@ -2,4 +2,4 @@
 
 ## A React App (with CRA) to search for GitHub users.
 
-https://github.com/blackforestcode/github-finder
+https://blackforestcode.github.io/github-finder/
