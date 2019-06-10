@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
@@ -11,12 +11,12 @@ import Navbar from './components/layout/Navbar';
 import Alert from './components/layout/Alert';
 
 // Users
-import Users from './components/users/Users';
-import Search from './components/users/Search';
 import User from './components/users/User';
 
 // Pages
+import Home from './components/pages/Home';
 import About from './components/pages/About';
+import NotFound from './components/pages/NotFound';
 
 const App = () => {
   return (
@@ -28,18 +28,10 @@ const App = () => {
             <div className="container">
               <Alert />
               <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={props => (
-                    <Fragment>
-                      <Search />
-                      <Users />
-                    </Fragment>
-                  )}
-                />
+                <Route exact path="/" component={Home} />
                 <Route exact path="/user/:login" component={User} />
                 <Route exact path="/about" component={About} />
+                <Route component={NotFound} />
               </Switch>
             </div>
           </div>
